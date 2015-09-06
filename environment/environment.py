@@ -1,10 +1,12 @@
+from .. import maze_generator
+
 class Environment:
     def __init__(self):
         self.__size = (9, 9)
-        self.__maze = maze_generator.Maze(self.size)
+        self.__maze = maze_generator.Maze(self._Environment__size)
         self.__current_coordinate = (0, 0)
         self.__move_count = 0
-        self.__history = [self.current_coordinate]
+        self.__history = [self._Environment__current_coordinate]
         self.__novelty = 0
 
     def wall(self):
@@ -22,10 +24,10 @@ class Environment:
         self._Environment__check_novelty()
 
     def __check_novelty(self):
-        flag = false
+        flag = False
         for coordinate in self.history:
             if coordinate == self.current_coordinate:
-                flag = true
+                flag = True
                 break
         if flag:
             self.novelty = 0
