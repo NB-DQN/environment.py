@@ -1,5 +1,3 @@
-import maze_generator
-
 class Environment:
     def __init__(self):
         self.__size = (9, 9)
