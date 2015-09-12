@@ -12,7 +12,7 @@ class Environment:
     def wall(self):
         return self.maze.wall(self.current_coordinate)
 
-    def move(direction):
+    def move(self, direction):
         neighbor = [ \
             (self.current_coordinate[0] + 1, self.current_coordinate[1]    ), \
             (self.current_coordinate[0] - 1, self.current_coordinate[1]    ), \
