@@ -2,12 +2,12 @@ from .. import maze_generator
 
 class Environment:
     def __init__(self):
-        self.__size = (9, 9)
-        self.__maze = maze_generator.Maze(self._Environment__size)
-        self.__current_coordinate = (0, 0)
-        self.__move_count = 0
-        self.__history = [self._Environment__current_coordinate]
-        self.__novelty = 0
+        self.size = (9, 9)
+        self.maze = maze_generator.Maze(self.size)
+        self.current_coordinate = (0, 0)
+        self.move_count = 0
+        self.history = [self.current_coordinate]
+        self.novelty = 0
 
     def wall(self):
         return self.maze.wall(self.current_coordinate)
