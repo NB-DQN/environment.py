@@ -35,6 +35,9 @@ class Environment:
             self.novelty = 10
             self.history.append(self.current_coordinate)
 
+    def exit(self):
+        return self.maze.is_exit(self.current_coordinate)
+
     def reset(self):
         self.current_coordinate = (0, 0)
         self.move_count = 0
