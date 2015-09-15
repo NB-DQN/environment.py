@@ -1,8 +1,8 @@
 from .. import maze_generator
 
 class Environment:
-    def __init__(self):
-        self.size = (9, 9)
+    def __init__(self, size=(9, 9)):
+        self.size = size
         self.maze = maze_generator.Maze(self.size)
         self.current_coordinate = (0, 0)
         self.move_count = 0
