@@ -1,4 +1,5 @@
 from .. import maze_generator
+import math
 
 class Environment:
     def __init__(self, size=(9, 9)):
@@ -37,6 +38,21 @@ class Environment:
 
     def exit(self):
         return self.maze.is_exit(self.current_coordinate)
+
+    def optical_targets(self):
+        return [ \
+            (          -1,           -1), \
+            (self.size[0],           -1), \
+            (          -1, self.size[1]), \
+            (self.size[0], self.size[1])]
+
+    def optical_params(self):
+        distance = []
+        for target in self.optical_targets():
+            distance.append(math.sqrt( \
+                (self.current_coordinate[0] - target[0]) ** 2 + \
+                (self.current_coordinate[1] - target[1]) ** 2))
+        return distance
 
     def reset(self):
         self.current_coordinate = (0, 0)
