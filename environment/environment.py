@@ -1,5 +1,6 @@
 from .. import maze_generator
 import math
+import numpy as np
 
 class Environment:
     def __init__(self, size=(9, 9)):
@@ -63,6 +64,27 @@ class Environment:
                 (self.current_coordinate[0] - target[0]) ** 2 + \
                 (self.current_coordinate[1] - target[1]) ** 2))
         return distance
+
+    def visual_image(self, cid=None):
+        if cid is None:
+            cid = self.coordinate_id()
+        coordinate = self.get_coordinate_from_id(cid)
+
+        DEGREE_PER_DOT = 6
+
+        image = np.zeros(360 / DEGREE_PER_DOT)
+        for target in self.visual_targets():
+            distance = math.sqrt( \
+                (coordinate[0] - target[0]) ** 2 + \
+                (coordinate[1] - target[1]) ** 2)
+            visual_width = math.degrees(math.atan(0.5 / distance))
+            angle = math.degrees(math.atan2(target[1] - coordinate[1], target[0] - coordinate[0]))
+            if angle < 0:
+                angle += 360
+
+            visual_range = [round(i / DEGREE_PER_DOT) for i in [angle - visual_width, angle + visual_width]]
+            image[visual_range[0]:(visual_range[1] + 1)] = 1
+        return image
 
     def reset(self):
         self.current_coordinate = (0, 0)
