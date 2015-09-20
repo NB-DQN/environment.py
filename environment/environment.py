@@ -10,8 +10,18 @@ class Environment:
         self.history = [self.current_coordinate]
         self.novelty = 0
 
-    def wall(self):
-        return self.maze.wall(self.current_coordinate)
+    def coordinate_id(self):
+        return self.current_coordinate[0] + self.current_coordinate[1] * self.size[1]
+
+    def get_coordinate_from_id(self, cid):
+        x = cid % self.size[1]
+        y = (cid - x) / self.size[1]
+        return (x, y)
+
+    def wall(self, cid=None):
+        if cid is None:
+            cid = self.coordinate_id()
+        return self.maze.wall(self.get_coordinate_from_id(cid))
 
     def move(self, direction):
         neighbor = [ \
