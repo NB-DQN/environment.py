@@ -58,7 +58,7 @@ class Environment:
 
     def visual_distance(self):
         distance = []
-        for target in self.optical_targets():
+        for target in self.visual_targets():
             distance.append(math.sqrt( \
                 (self.current_coordinate[0] - target[0]) ** 2 + \
                 (self.current_coordinate[1] - target[1]) ** 2))
