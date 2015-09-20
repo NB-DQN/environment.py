@@ -49,14 +49,14 @@ class Environment:
     def exit(self):
         return self.maze.is_exit(self.current_coordinate)
 
-    def optical_targets(self):
+    def visual_targets(self):
         return [ \
             (          -1,           -1), \
             (self.size[0],           -1), \
             (          -1, self.size[1]), \
             (self.size[0], self.size[1])]
 
-    def optical_params(self):
+    def visual_distance(self):
         distance = []
         for target in self.optical_targets():
             distance.append(math.sqrt( \
