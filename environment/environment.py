@@ -51,10 +51,10 @@ class Environment:
 
     def visual_targets(self):
         return [ \
-            (          -1,           -1), \
-            (self.size[0],           -1), \
+            (self.size[0], self.size[1]), \
             (          -1, self.size[1]), \
-            (self.size[0], self.size[1])]
+            (          -1,           -1), \
+            (self.size[0],           -1)]
 
     def visual_distance(self):
         distance = []
