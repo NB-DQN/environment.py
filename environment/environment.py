@@ -12,11 +12,11 @@ class Environment:
         self.novelty = 0
 
     def coordinate_id(self):
-        return self.current_coordinate[0] + self.current_coordinate[1] * self.size[1]
+        return self.current_coordinate[0] + self.current_coordinate[1] * self.size[0]
 
     def get_coordinate_from_id(self, cid):
-        x = cid % self.size[1]
-        y = (cid - x) / self.size[1]
+        x = cid % self.size[0]
+        y = (cid - x) / self.size[0]
         return (x, y)
 
     def wall(self, cid=None):
